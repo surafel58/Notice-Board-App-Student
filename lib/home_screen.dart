@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -74,6 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         return ListTile(
                           title: Text(file.name),
+                          trailing: IconButton(
+                            onPressed: () => downloadFile(file),
+                            icon: const Icon(Icons.download),
+                          ),
                         );
                       });
                 } else if (snapshot.hasError) {
@@ -84,6 +90,22 @@ class _HomeScreenState extends State<HomeScreen> {
               })
         ],
       ),
+    );
+  }
+
+  downloadFile(Reference file) async {
+    final url = await file.getDownloadURL();
+    final path = '/storage/emulated/0/Download/${file.name}';
+    await Dio().download(url, path);
+
+    if (url.contains('.mp4')) {
+      await GallerySaver.saveVideo(path, toDcim: true);
+    } else if (url.contains('.jpg')) {
+      await GallerySaver.saveImage(path, toDcim: true);
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Downloaded ${file.name}')),
     );
   }
 }
