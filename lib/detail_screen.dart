@@ -29,7 +29,12 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     Permission.storage.request();
 
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Information'),
+      ),
+      body: buildFileList(futureFiles),
+    );
   }
 
   FutureBuilder<ListResult> buildFileList(Future<ListResult> futureFiles) {
@@ -49,17 +54,37 @@ class _DetailScreenState extends State<DetailScreen> {
 
                   double? progress = downloadProgress[index];
 
-                  return ListTile(
-                    title: Text(file.name),
-                    subtitle: progress != null
-                        ? LinearProgressIndicator(
-                            value: progress,
-                            backgroundColor: Colors.black,
-                          )
-                        : null,
-                    trailing: IconButton(
-                      onPressed: () => downloadFile(index, file),
-                      icon: const Icon(Icons.download),
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text(file.name),
+                            subtitle: progress != null
+                                ? LinearProgressIndicator(
+                                    value: progress,
+                                    backgroundColor: Colors.black,
+                                  )
+                                : null,
+                            trailing: IconButton(
+                              onPressed: () => downloadFile(index, file),
+                              icon: const Icon(Icons.download),
+                            ),
+                          ),
+                          FutureBuilder<FullMetadata>(
+                            future: file.getMetadata(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return Text(
+                                    snapshot.data!.timeCreated.toString());
+                              } else {
+                                return Text('');
+                              }
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 });

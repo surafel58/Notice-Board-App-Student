@@ -2,7 +2,7 @@
     package="com.dnb.digital_notice_board">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
    <application
-        android:label="Digital Notice Board"
+        android:label="Notice Board(Student)"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
