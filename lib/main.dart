@@ -8,6 +8,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import 'detail_screen.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/loginscreen': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
         '/signupscreen': (context) => const SignupScreen(),
+        '/detailscreen': (context) => const DetailScreen(),
       },
     );
   }
