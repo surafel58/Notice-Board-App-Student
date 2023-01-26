@@ -47,20 +47,42 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Signed in as: "),
-            SizedBox(
-              height: 4,
-            ),
-            Text(user.email!),
-            SizedBox(
-              height: 4,
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("Signed in as:    ${user.email!}"),
+              const SizedBox(
+                height: 4,
+              ),
+            ],
+          ),
+          FutureBuilder<ListResult>(
+              future: futureFiles,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final files = snapshot.data!.items;
+
+                  return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: files.length,
+                      itemBuilder: (context, index) {
+                        //get specific file
+                        final file = files[index];
+
+                        return ListTile(
+                          title: Text(file.name),
+                        );
+                      });
+                } else if (snapshot.hasError) {
+                  return const Center(child: Text("An Error has occurred"));
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              })
+        ],
       ),
     );
   }
