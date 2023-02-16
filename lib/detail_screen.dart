@@ -40,7 +40,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Information'),
+        title: const Text('Files'),
       ),
       body: buildFileList(futureFiles),
     );

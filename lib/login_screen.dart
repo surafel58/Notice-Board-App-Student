@@ -30,12 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             TextField(
               controller: emailController,
-              decoration: InputDecoration(labelText: "Email"),
+              decoration: const InputDecoration(labelText: "Email"),
               onTap: () {
                 setState(() {
                   visible = false;
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               controller: passwordController,
-              decoration: InputDecoration(labelText: "Password"),
+              decoration: const InputDecoration(labelText: "Password"),
               obscureText: true,
               onTap: () {
                 setState(() {
@@ -107,8 +107,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text("No Account?"),
                 TextButton(
                     onPressed: () {
-                      // Navigator.of(context)
-                      //     .pushReplacementNamed("/signupscreen");
                       Navigator.of(context).pushNamed("/signupscreen");
                     },
                     child: Text("Sign up")),

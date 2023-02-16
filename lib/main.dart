@@ -8,9 +8,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import 'constants.dart';
 import 'detail_screen.dart';
 
-/// eyandandu department file mefterna kefilochu access endiareg mareg
+///loading screen mechemer
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -28,6 +29,23 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Digital Notice Board',
       initialRoute: '/',
+      theme: ThemeData.dark().copyWith(
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: kPrimaryColor),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(width: 3, color: kPrimaryColor),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
+        ),
+        appBarTheme: const AppBarTheme(
+          // centerTitle: true,
+          color: kPrimaryColor,
+        ),
+      ),
       routes: {
         '/': (context) => const MainScreen(),
         '/loginscreen': (context) => const LoginScreen(),
