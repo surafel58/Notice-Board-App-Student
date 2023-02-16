@@ -10,6 +10,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import 'detail_screen.dart';
 
+/// eyandandu department file mefterna kefilochu access endiareg mareg
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

@@ -1,3 +1,4 @@
+import 'package:digital_notice_board/screen_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -22,11 +23,19 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();
-    futureFiles = FirebaseStorage.instance.ref('/Registrar files').listAll();
   }
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
+    String filename = args.filePath;
+    //if registrar then append 'files' to it
+    if (filename == "/Registrar") {
+      filename += " files";
+    }
+    futureFiles = FirebaseStorage.instance.ref(filename).listAll();
+
+    //request storage request
     Permission.storage.request();
 
     return Scaffold(

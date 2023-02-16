@@ -6,5 +6,5 @@ const Departments = [
   "Biology Department",
   "Chemistry Department",
   "Geography Department",
-  "Physical Science Department",
+  "Sport Science Department",
 ];

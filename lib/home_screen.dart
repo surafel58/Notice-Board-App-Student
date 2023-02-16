@@ -1,3 +1,4 @@
+import 'package:digital_notice_board/screen_arguments.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -74,8 +75,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Card(
                       child: ListTile(
                         leading: Text(Departments[index]),
-                        onTap: () =>
-                            Navigator.pushNamed(context, '/detailscreen'),
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          '/detailscreen',
+                          arguments: ScreenArguments(
+                              filePath: '/${Departments[index]}'),
+                        ),
                       ),
                     ),
                   );
