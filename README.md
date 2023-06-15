@@ -1,16 +1,27 @@
-# digital_notice_board
+# Notice Board App Student
 
-A new Flutter project.
+A Flutter app which is built for educational institution that is used to get posted notices from different departments found in the education institution.
+Admin side -> https://github.com/surafel58/Notice-Board-App-Admin.git
+
+## Tools used
+Flutter  
+Firebase
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. clone project
+1. open Android Studio or VS code.
+1. run ``` pub get ```
+1. run ``` flutter run ```
 
-A few resources to get you started if this is your first Flutter project:
+## Tips
+How to setup firebase and flutter -> https://www.youtube.com/watch?v=sfA3NWDBPZ4&list=PL4cUxeGkcC9j--TKIdkb3ISfRbJeJYQwC
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Contributing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
